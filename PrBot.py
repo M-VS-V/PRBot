@@ -44,14 +44,13 @@ greetings = ('Здоров братиш, есть че посмотреть?',
 
 now = datetime.datetime.now()
 usernames = {
-    1: 'Артем',
-    2: 'Саша',
-    3: 'Саня',
-    4: 'Сева',
-    5: 'Искандер',
-    6: 'Дима',
-    7: 'Слава',
-    8: 'unknown'
+    'artkirillov': 'Артем',
+    'gorem': 'Саша',
+    'keri_kun': 'Саня',
+    'xtxtxtxtxt': 'Сева',
+    'yadgar0v': 'Искандер',
+    'trimonovds': 'Дима',
+    'elrid': 'Слава'
 }
 
 def main():
@@ -71,9 +70,12 @@ def main():
 
         last_update_id = last_update['update_id']
         last_chat_id = last_update['message']['chat']['id']
-        last_chat_name = last_update['message']['chat']['first_name']
+        last_chat_name = last_update['message']['chat']['username']
 
-        option1, option2 = random.sample(range(1, 8), 2)
+        users = list(filter(lambda x: x != last_chat_name, usernames.keys()))
+        print(last_chat_name)
+        print(users)
+        option1, option2 = random.sample(users, 2)
 
         greet_bot.send_message(last_chat_id, "{}, {}\n".format(usernames[option1],usernames[option2]))
 
