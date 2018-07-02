@@ -1,1 +1,1 @@
-web: python PrBot.py
+worker: python PrBot.py
