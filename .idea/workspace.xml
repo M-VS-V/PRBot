@@ -16,8 +16,8 @@
       <file leaf-file-name="PrBot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PrBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+            <state relative-caret-position="309">
+              <caret line="108" column="30" lean-forward="true" selection-start-line="108" selection-start-column="30" selection-end-line="108" selection-end-column="30" />
               <folding>
                 <element signature="e#48#63#0" expanded="true" />
               </folding>
@@ -596,8 +596,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PrBot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+        <state relative-caret-position="309">
+          <caret line="108" column="30" lean-forward="true" selection-start-line="108" selection-start-column="30" selection-end-line="108" selection-end-column="30" />
           <folding>
             <element signature="e#48#63#0" expanded="true" />
           </folding>

@@ -99,10 +99,10 @@ def main():
     today = now.day
     hour = now.hour
     #schedule.every(1).seconds.do(greet_bot.job, '5 часов 123 минуты')
-    schedule.every().day.at('15:00').do(greet_bot.job, '4 часа ревью')
+    schedule.every().day.at('15:10').do(greet_bot.job, '4 часа ревью')
     schedule.every().day.at('18:00').do(greet_bot.job, '1 час до псарни')
-    schedule.every().day.at('19:30').do(greet_bot.job, '30 мин до покаяния')
-    schedule.every().day.at('19:55').do(greet_bot.job, '5 мин до расправы')
+    schedule.every().day.at('18:30').do(greet_bot.job, '30 мин до покаяния')
+    schedule.every().day.at('18:55').do(greet_bot.job, '5 мин до расправы')
     schedule.every().day.at('19:00').do(greet_bot.job, 'Пора пиздовать на ревью')
 
     while True:
