@@ -5,6 +5,8 @@ import requests
 import datetime
 import random
 import hashlib
+import schedule
+import time
 
 Hash = hashlib.sha512
 MAX_HASH_PLUS_ONE = 2**(Hash().digest_size * 8)
@@ -20,8 +22,13 @@ def str_to_prob(in_str):
     return random.Random(in_str).random()
 
 token = "533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU"
-"https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?text=Пульцы&chat_id=-1001066118523"
+#"https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?text=Пульцы&chat_id=-1001066118523" kartish
+#https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?text=ЗАчем&chat_id=-1001197750275 delo
 class BotHandler:
+
+    def job(self, t):
+        self.send_message(-1001197750275, t)
+        return
 
     def __init__(self, token):
         self.token = token
@@ -44,8 +51,8 @@ class BotHandler:
         return {}
 
     def send_message(self, chat_id, text):
-        params = {'chat_id': chat_id, 'text': text}
         method = 'sendMessage'
+        params = {'chat_id': chat_id, 'text': text}
         resp = requests.post(self.api_url + method, params)
         return resp
 
@@ -91,8 +98,15 @@ def main():
     new_offset = None
     today = now.day
     hour = now.hour
+    #schedule.every(1).seconds.do(greet_bot.job, '5 часов 123 минуты')
+    schedule.every().day.at('15:00').do(greet_bot.job, '4 часа ревью')
+    schedule.every().day.at('18:00').do(greet_bot.job, '1 час до псарни')
+    schedule.every().day.at('19:30').do(greet_bot.job, '30 мин до покаяния')
+    schedule.every().day.at('19:55').do(greet_bot.job, '5 мин до расправы')
+    schedule.every().day.at('19:00').do(greet_bot.job, 'Пора пиздовать на ревью')
 
     while True:
+        schedule.run_pending()
         greet_bot.get_updates(new_offset)
         last_update = greet_bot.get_last_update()
         print("new_offset={}".format(new_offset))
