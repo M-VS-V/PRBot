@@ -24,10 +24,13 @@ def str_to_prob(in_str):
 token = "533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU"
 #"https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?text=Пульцы&chat_id=-1001066118523" kartish
 #https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?text=ЗАчем&chat_id=-1001197750275 delo
+
+DELO_CHAT_ID = -1001197750275
+
 class BotHandler:
 
     def job(self, t):
-        self.send_message(-1001197750275, t)
+        self.send_message(DELO_CHAT_ID, t)
         return
 
     def __init__(self, token):
@@ -99,10 +102,8 @@ def main():
     today = now.day
     hour = now.hour
     #schedule.every(1).seconds.do(greet_bot.job, '5 часов 123 минуты')
-    schedule.every().day.at('15:10').do(greet_bot.job, '4 часа ревью')
     schedule.every().day.at('18:00').do(greet_bot.job, '1 час до псарни')
-    schedule.every().day.at('18:30').do(greet_bot.job, '30 мин до покаяния')
-    schedule.every().day.at('18:55').do(greet_bot.job, '5 мин до расправы')
+    schedule.every().day.at('18:30').do(greet_bot.job, '30 мин до комнаты боли')
     schedule.every().day.at('19:00').do(greet_bot.job, 'Пора пиздовать на ревью')
 
     while True:
@@ -150,7 +151,9 @@ def main():
 
         option1, option2, option3 = sampleOwn(users, text)
         print(option1, option2, option3)
+
         if not str(last_chat_id).startswith('-'):
+            greet_bot.send_message(DELO_CHAT_ID, "Были назначены '{}, {}, {}' на PR {} от {}\n".format(usernames[option1], usernames[option2], usernames[option3], text, last_chat_username))
             greet_bot.send_message(last_chat_id, "{}, {}, {}\n".format(usernames[option1],usernames[option2],usernames[option3]))
 
 
