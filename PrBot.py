@@ -94,17 +94,22 @@ def sampleOwn(users, anyString):
     random.shuffle(users)
     return random.sample(users, 3)
 
+def schedule_pr_notifications():
+    monday_job = schedule.every().monday
+    tuesday_job = schedule.every().tuesday
+    wednesday_job = schedule.every().wednesday
+    thursday_job = schedule.every().thursday
+    friday_job = schedule.every().friday
+    for job in [monday_job, tuesday_job, wednesday_job, thursday_job, friday_job]:
+        job.at('18:00').do(greet_bot.job, '1 час до псарни')
+        job.at('18:30').do(greet_bot.job, '30 мин до комнаты боли')
+        job.at('19:00').do(greet_bot.job, 'Пора пиздовать на ревью')
 
 usersCount = len(usernames)
 #https://api.telegram.org/bot533104134:AAGe7wFEMq0AfJX6D17Wm9gptIFOfwv79CU/sendMessage?chat_id=117947739&text="Как побегал"
 def main():
     new_offset = None
-    today = now.day
-    hour = now.hour
-    #schedule.every(1).seconds.do(greet_bot.job, '5 часов 123 минуты')
-    schedule.every().day.at('18:00').do(greet_bot.job, '1 час до псарни')
-    schedule.every().day.at('18:30').do(greet_bot.job, '30 мин до комнаты боли')
-    schedule.every().day.at('19:00').do(greet_bot.job, 'Пора пиздовать на ревью')
+    schedule_pr_notifications()
 
     while True:
         schedule.run_pending()
