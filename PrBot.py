@@ -78,14 +78,14 @@ greetings = ('Здоров братиш, есть че посмотреть?',
 
 now = datetime.datetime.now()
 usernames = {
-    'artkirillov': 'Артем',
-    'keri_kun': 'СанСаныч',
-    'sanllier': 'Горемыка',
-    'xtxtxtxtxt': 'МашинаБездушная',
-    'yadgar0v': 'Кандёр',
-    'trimonovds': 'RxПсина',
-    'elrid': 'Слава',
-    'likhogrud': 'Коля'
+    'artkirillov': '@artkirillov',
+    'keri_kun': '@keri_kun',
+    'sanllier': '@sanllier',
+    'xtxtxtxtxt': '@xtxtxtxtxt',
+    'yadgar0v': '@yadgar0v',
+    'trimonovds': '@trimonovds',
+    'elrid': '@elrid',
+    'likhogrud': '@likhogrud'
 }
 
 def sampleOwn(users, anyString):
