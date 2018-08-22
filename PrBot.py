@@ -77,7 +77,9 @@ greetings = ('Здоров братиш, есть че посмотреть?',
              'Доброе утро')
 
 now = datetime.datetime.now()
+
 usernames = {
+    'antonsergeev88': 'antonsergeev88',
     'artkirillov': '@artkirillov',
     'keri_kun': '@keri_kun',
     'sanllier': '@sanllier',
@@ -89,10 +91,9 @@ usernames = {
 }
 
 def sampleOwn(users, anyString):
-    print()
     random.seed(anyString)
     random.shuffle(users)
-    return random.sample(users, 3)
+    return random.sample(users, 2)
 
 def schedule_pr_notifications():
     monday_job = schedule.every().monday
@@ -133,36 +134,16 @@ def main():
         print('users = ' + str(users))
         print('text = ' + str(text))
 
-        # dic = {}
-        # for i in range(10000):
-        #     option1, option2, option3 = sampleOwn(users, str(i))
-        #     if option1 in dic:
-        #         dic[option1] += 1
-        #     else:
-        #         dic[option1] = 0
-        #
-        #     if option2 in dic:
-        #         dic[option2] += 1
-        #     else:
-        #         dic[option2] = 0
-        #
-        #     if option3 in dic:
-        #         dic[option3] += 1
-        #     else:
-        #         dic[option3] = 0
-        #
-        # for k,v in dic.items():
-        #     print(k,v,sep= '_')
-
         option1, option2, option3 = sampleOwn(users, text)
-        print(option1, option2, option3)
+        print(option1, option2)
 
         if not str(last_chat_id).startswith('-'):
-            greet_bot.send_message(DELO_CHAT_ID, "Были назначены '{}, {}, {}' на PR {} от {}\n".format(usernames[option1], usernames[option2], usernames[option3], text, last_chat_username))
-            greet_bot.send_message(last_chat_id, "{}, {}, {}\n".format(usernames[option1],usernames[option2],usernames[option3]))
+            greet_bot.send_message(DELO_CHAT_ID, "Были назначены '{}, {}' на PR {} от {}\n".format(usernames[option1], usernames[option2], text, last_chat_username))
+            greet_bot.send_message(last_chat_id, "{}, {}\n".format(usernames[option1], usernames[option2]))
 
 
         new_offset = last_update_id + 1
+
 
 if __name__ == '__main__':
     try:
