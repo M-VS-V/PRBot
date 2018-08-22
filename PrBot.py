@@ -79,7 +79,7 @@ greetings = ('Здоров братиш, есть че посмотреть?',
 now = datetime.datetime.now()
 
 usernames = {
-    'antonsergeev88': 'antonsergeev88',
+    'antonsergeev88': '@antonsergeev88',
     'artkirillov': '@artkirillov',
     'keri_kun': '@keri_kun',
     'sanllier': '@sanllier',
@@ -134,7 +134,7 @@ def main():
         print('users = ' + str(users))
         print('text = ' + str(text))
 
-        option1, option2, option3 = sampleOwn(users, text)
+        option1, option2  = sampleOwn(users, text)
         print(option1, option2)
 
         if not str(last_chat_id).startswith('-'):
